@@ -1,0 +1,25 @@
+{
+  "name": "vuejs-with-vite",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4173"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "@vue/test-utils": "^2.4.0",
+    "bootstrap": "^5.3.0",
+    "bootstrap-vue": "^2.23.1",
+    "jquery": "^3.7.0",
+    "popper.js": "^1.16.1",
+    "portal-vue": "^3.0.0",
+    "vue": "^3.3.4",
+    "vue-functional-data-merge": "^3.1.0",
+    "vue-router": "^4.2.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "vite": "^4.4.2"
+  }
+}
