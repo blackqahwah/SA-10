@@ -4,6 +4,7 @@ import LogIn from './components/login.vue'
 </script>
 
 <template>
+  <body class="container vh-100">
   <header class="d-flex flex-column justify-content-center align-items-center">
 
     <div>
@@ -22,7 +23,11 @@ import LogIn from './components/login.vue'
   <main>
     <LogIn/>
   </main>
+
+    </body>
 </template>
+
+
 
 <style scoped>
 

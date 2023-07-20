@@ -4,7 +4,7 @@
 
     <div>
       
-    <div class="d-flex flex-row">
+     <div class="d-flex flex-row">
       
     
   <i class="bi bi-info-square-fill me-3">
@@ -23,7 +23,7 @@
 
       <div>
         
-      <input type="name" class="form-control mb-5" id="name">
+      <input v-model="username" type="name" class="form-control mb-5" id="name">
         
         <slot name="inputname"></slot>
       
@@ -38,10 +38,7 @@
       </div>
 
 
-
-
-
-<div class="d-flex flex-row">
+     <div class="d-flex flex-row">
       
     <i class="bi bi-envelope-check-fill me-3">
       <slot name="emailicon"></slot>
@@ -59,7 +56,7 @@
 
       <div>
         
-      <input type="email" class="form-control mb-5" id="email">
+      <input v-model="useremail"  type="email" class="form-control mb-5" id="email">
         
         <slot name="inputemail"></slot>
       
@@ -92,7 +89,7 @@
 
       <div>
         
-      <input type="gender" class="form-control mb-5" id="gender">
+      <input v-model="usergender"  type="gender" class="form-control mb-5" id="gender">
         
         <slot name="inputgender"></slot>
       
@@ -126,7 +123,7 @@
 
       <div>
         
-      <input type="country" class="form-control mb-5" id="country">
+      <input v-model="usercountry"  type="country" class="form-control mb-5" id="country">
         
         <slot name="inputcountry"></slot>
       
@@ -146,6 +143,8 @@
     </div>
     
     </form>
+
+  
 </template>
 
 <!--for button
@@ -157,6 +156,52 @@
           
         </button>
       </div>-->
+
+
+
+<script>
+
+  
+export const formToStorage = {
+  
+  data() {
+    return {
+      username: "",
+      useremail: "",
+      usergender: "",
+      usercountry: ""
+    };
+  },
+
+   mounted() {
+    
+    if (localStorage.username && localStorage.useremail && localStorage.usergender && localStorage.usercountry) 
+    {
+      this.username = localStorage.username,
+      this.useremail = localStorage.useremail,
+      this.usergender = localStorage.usergender,
+      this.usercountry = localStorage.usercountry   
+    }
+  },
+  watch: {
+    username(newName) {
+      localStorage.username = newName;
+    },
+     useremail(newMail) {
+      localStorage.useremail = newMail;
+    },
+     usergender(newGender) {
+      localStorage.usergender = newGender;
+    },
+     usercountry(newCountry) {
+      localStorage.usercountry = newCountry;
+    }
+  }
+};
+
+
+  
+</script>
 
 
 

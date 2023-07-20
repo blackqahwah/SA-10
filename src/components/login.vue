@@ -9,7 +9,7 @@ import formbar from './formstruct.vue'
 
 <template>
   
-  <formbar>
+  <formbar >
     <template #nameicon>
       
     </template>
