@@ -1,13 +1,30 @@
+
+
 <template>
   
-  <form class="d-flex flex-column mb-1 mt-4 mx-auto justify-content-center align-items-center">
+  <form @submit.prevent="submit(); takemeThere();" class="d-flex flex-column justify-content-center align-items-center">
 
-    <div>
+   <!-- <form @submit.prevent="submit(); sendVerificationEmail(); takemeThere();" class="d-flex flex-column justify-content-center align-items-center">-->
+
+
+    <div class=" d-flex flex-column align-items-center ">
+
       
+    
+          
+    <img alt="SA Logo" class="logo mb-4" src="../assets/log1.png" width="50" height="55" />
+       
+      <h1 class="blue mb-3 fw-medium"> <slot name="msg"></slot></h1>
+      <h3 class="nudge fw-normal"><slot name="nudge"></slot></h3>
+         <hr class="mb-4">
+
+     
+      <div class="d-flex flex-column mt-3">
+        
      <div class="d-flex flex-row">
       
     
-  <i class="bi bi-info-square-fill me-3">
+  <i class="bi bi-info-square-fill me-2">
       <slot name="nameicon"></slot>
     </i>
  
@@ -23,24 +40,30 @@
 
       <div>
         
-      <input v-model="username" type="name" class="form-control mb-5" id="name">
+      <input v-model="username" type="name" class="form-control mb-4" id="name">
         
         <slot name="inputname"></slot>
       
       </div>
 
-       <div>
+        
+      <div>
 
         <h4 class="form-text">
           <slot name="helptext"></slot>
         </h4>
         
       </div>
+        
+        
+      </div>
+        
+       
 
-
+<div class="d-flex flex-column">
      <div class="d-flex flex-row">
       
-    <i class="bi bi-envelope-check-fill me-3">
+    <i class="bi bi-envelope-check-fill me-2">
       <slot name="emailicon"></slot>
     </i>
  
@@ -56,7 +79,7 @@
 
       <div>
         
-      <input v-model="useremail"  type="email" class="form-control mb-5" id="email">
+      <input v-model="useremail"  type="email" class="form-control mb-4" id="email">
         
         <slot name="inputemail"></slot>
       
@@ -69,11 +92,13 @@
         </h4>
         
       </div>
+</div>
 
 
+    <div class="d-flex flex-column">
       <div class="d-flex flex-row">
       
-    <i class="bi bi-person-badge-fill me-3">
+    <i class="bi bi-person-badge-fill me-2">
       <slot name="gendericon"></slot>
     </i>
  
@@ -87,11 +112,16 @@
      
 </div>
 
-      <div>
+       <div>
         
-      <input v-model="usergender"  type="gender" class="form-control mb-5" id="gender">
+        <select v-model="usergender"  class="form-control mb-4" id="gender">
+
+ <option value="1">Please select an option</option>
+    <option value="female">Female</option>
+    <option value="male">Male</option>
+  </select>
         
-        <slot name="inputgender"></slot>
+<slot name="inputgender"></slot>
       
       </div>
 
@@ -102,12 +132,13 @@
         </h4>
         
       </div>
+    </div>
 
+    <div class="d-flex flex-column">
 
-
-       <div class="d-flex flex-row">
+    <div class="d-flex flex-row">
       
-    <i class="bi bi-geo-alt-fill me-3">
+    <i class="bi bi-geo-alt-fill me-2">
       <slot name="countryicon"></slot>
     </i>
  
@@ -123,7 +154,7 @@
 
       <div>
         
-      <input v-model="usercountry"  type="country" class="form-control mb-5" id="country">
+      <input v-model="usercountry"  type="country" class="form-control mb-4" id="country">
         
         <slot name="inputcountry"></slot>
       
@@ -138,93 +169,184 @@
       </div>
 
 
+
+
       
 
+      
+      <div >
+
+     
+
+        <button class="subm btn btn-primary mt-3 fw-medium">
+
+        <slot name="subm"></slot>
+          
+        </button>
+       
+   
+      </div>
+
     </div>
+
+    
+
+     </div>
+
     
     </form>
 
   
 </template>
 
-<!--for button
-<div>
 
-        <button type="submit" class="btn btn-primary">
-          
-<slot name="subm"></slot>
-          
-        </button>
-      </div>-->
+
 
 
 
 <script>
 
-  
+
+import { getAuth, sendSignInLinkToEmail  } from "firebase/auth";
+  import {ref} from 'vue'
+
 export const formToStorage = {
   
   data() {
     return {
       username: "",
       useremail: "",
-      usergender: "",
+      usergender:["male", "female"],
       usercountry: ""
     };
   },
 
    mounted() {
     
-    if (localStorage.username && localStorage.useremail && localStorage.usergender && localStorage.usercountry) 
+    if (localStorage.username && localStorage.useremail && localStorage.usergender && localStorage.usercountry)
     {
       this.username = localStorage.username,
       this.useremail = localStorage.useremail,
       this.usergender = localStorage.usergender,
-      this.usercountry = localStorage.usercountry   
+      this.usercountry = localStorage.usercountry
     }
   },
-  watch: {
-    username(newName) {
-      localStorage.username = newName;
+
+
+  methods: {
+    
+    submit() {
+      
+      localStorage.username = this.username;
+      localStorage.useremail = this.useremail;
+      localStorage.usergender = this.usergender;
+      localStorage.usercountry = this.usercountry;
+
+   localStorage.setItem('emailForSignIn', this.useremail);
+      
+      
+      console.log('profile created');
     },
-     useremail(newMail) {
-      localStorage.useremail = newMail;
-    },
-     usergender(newGender) {
-      localStorage.usergender = newGender;
-    },
-     usercountry(newCountry) {
-      localStorage.usercountry = newCountry;
-    }
+
+//     sendVerificationEmail() {
+
+//    const actionCodeSettings = {
+//      url:'https://speakarabic.web.app/payteller',
+//      handleCodeInApp: true
+// };
+  
+//    const auth = getAuth();
+     
+//    sendSignInLinkToEmail(auth, this.useremail, actionCodeSettings)
+     
+//   .then(() => {
+
+   
+//    localStorage.setItem('emailForSignIn', this.useremail);
+//     localStorage.setItem('paidcode', this.userpaidcode);
+
+//     // console.log(emailForSignIn)
+    
+//     console.log('sent!')
+//   })
+    
+//   .catch((error) => {
+//     const errorCode = error.code;
+//     const errorMessage = error.message;
+    
+//     console.log(errorCode, errorMessage)
+  
+//   });
+
+//   },
+
+   takemeThere() {
+  this.$router.push({ name: 'confirm' })
+    console.log("go to paywall");
+}
+
   }
+  
+
 };
 
 
-  
 </script>
 
 
 
 <style scoped>
 
+
+  h3 {
+  font-size: 1.2rem;
+}
+
+
+ .nudge {
+
+  background-color: #fac8ef; 
+   padding: 0.3rem;
+    
+  }
+
+  header {
+  line-height: 1.5;
+}
+
+  hr{
+
+   color: #103975 !important;
+    width: 55vw;
+    
+  }
+
+
   i {
 
-    font-size: 1.5rem; 
+    font-size: 1rem; 
     color: #103975 ;
     
     
   }
 
+  .subm{
+
+    background-color: #103975;
+    border: none !important;
+    color: #fac8ef;
+    
+  }
   .form-label{
 
-     font-size: 1.5rem;
+     font-size: 1rem;
      color: #103975 ;
   }
 
   .form-control {
 
   width: 55vw !important;
-  border-radius: 0 !important;
+  border-radius: 0.3rem !important;
   border-color: #103975 !important;
   }
   
@@ -240,7 +362,7 @@ export const formToStorage = {
  
    .form-control {
 
-  width: 35vw !important;
+  width: 25vw !important;
      
   }
 
