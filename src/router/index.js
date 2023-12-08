@@ -2,8 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import { getAuth, isSignInWithEmailLink, signInWithEmailLink } from "firebase/auth";
 
-import { auth } from '../firebase'
-
 import Profile from '../components/profile.vue' 
 
 import Confirm from '../components/confirm.vue' 
@@ -66,59 +64,105 @@ const router = createRouter({
 
 
 
-router.beforeEach((to, from, next) => {
+// router.beforeEach((to, from, next) => {
 
-  if(to.meta.requiresAuth){
-    const token = localStorage.getItem('token');
-    if(token){
-      next();
-    } else{
-      next('/confirm');
-    }
-  } else{
-    next();
-    }
-});
+//   if(to.meta.requiresAuth){
+//     const token = localStorage.getItem('token');
+//     if(token){
+//       next();
+//     } else{
+//       next('/confirm');
+//     }
+//   } else{
+//     next();
+//     }
+// });
+
+// router.beforeEach((to, from, next) => {
+//   if (to.path === '/welcome') {
+//     const email = localStorage.getItem('emailForSignIn');
+//     if (!email) {
+//       next('/confirm');
+//     }else {
+//       console.log(email);
+//       next();
+//     }
+//   }else{
+//     next();
+//   }
+// });
+
 
 
 // router.beforeEach((to, from, next) => {
+//  if (to.path === '/welcome') {
+//    onAuthStateChanged(auth, (user) => {
+//      if (user) {
+//        // User is signed in.
+//        next();
+//      } else {
+//        // No user is signed in.
+//        next('/confirm');
+//      }
+//    });
+//  } else {
+//    next();
+//  }
+// });
 
 
+// router.beforeEach((to, from, next) => {
+//  if (to.path === '/welcome') {
+//    const auth = getAuth();
+//    if (isSignInWithEmailLink(auth, window.location.href)) {
+//      signInWithEmailLink(auth, window.localStorage.getItem('emailForSignIn'), window.location.href)
+//        .then((result) => {
+//          // User is signed in.
+//          console.log('signed in')
+//          next();
+//        })
+//        .catch((error) => {
+//          // No user is signed in.
+//          next('/confirm');
+//        });
+//    } else {
+//      // No user is signed in.
+//      next('/confirm');
+//    }
+//  } else {
+//    next();
+//  }
+// });
 
-//   const auth = getAuth();
+router.beforeEach((to, from, next) => {
+ if (to.path === '/welcome') {
+   const auth = getAuth();
+   if (isSignInWithEmailLink(auth, window.location.href)) {
 
-//   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+     let email = window.localStorage.getItem('useremail');
 
-//   const isAuthenticated = isSignInWithEmailLink(auth, window.location.href) 
-
-//   let email = window.localStorage.getItem('emailForSignIn');
-
-
-//   signInWithEmailLink(auth, email, window.location.href)
-//     .then((result) => {
-
-//       window.localStorage.removeItem('emailForSignIn');
-
-//     })
-//     .catch((error) => {
-
-//     });
-
-
-//   if (requiresAuth && !isAuthenticated) {
-//     next('/')
-//   } else if (!requiresAuth && isAuthenticated) {
-//     next('welcome')
-//   } else {
-//     next()
-//   }
-
-
-
-// })
-
-
-
+     if(!email) {
+       email = window.prompt('please provide your email for confirmation');
+     }
+     
+     signInWithEmailLink(auth,email, window.location.href)
+       .then((result) => {
+         // User is signed in.
+         console.log('signed in')
+         next();
+       })
+       .catch((error) => {
+         // No user is signed in.
+         next('/confirm');
+       });
+   } else {
+     // No user is signed in.
+     next('/confirm');
+   }
+ } else {
+   next();
+ }
+});
 
 
 export default  router
