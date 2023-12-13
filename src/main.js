@@ -1,6 +1,7 @@
 import { createApp } from 'vue';
 import App from './App.vue'
-import { auth } from "./firebase";
+// import { auth } from "./firebase";
+import './firebase';
 
 // import router from './router'
 
@@ -61,6 +62,8 @@ import('./router').then(({ default: router }) => {
   app.mixin(formToStorage);
 
   app.mount('#app');
+
+
   
 });
 

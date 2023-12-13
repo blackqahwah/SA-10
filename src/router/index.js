@@ -63,77 +63,6 @@ const router = createRouter({
 
 
 
-
-// router.beforeEach((to, from, next) => {
-
-//   if(to.meta.requiresAuth){
-//     const token = localStorage.getItem('token');
-//     if(token){
-//       next();
-//     } else{
-//       next('/confirm');
-//     }
-//   } else{
-//     next();
-//     }
-// });
-
-// router.beforeEach((to, from, next) => {
-//   if (to.path === '/welcome') {
-//     const email = localStorage.getItem('emailForSignIn');
-//     if (!email) {
-//       next('/confirm');
-//     }else {
-//       console.log(email);
-//       next();
-//     }
-//   }else{
-//     next();
-//   }
-// });
-
-
-
-// router.beforeEach((to, from, next) => {
-//  if (to.path === '/welcome') {
-//    onAuthStateChanged(auth, (user) => {
-//      if (user) {
-//        // User is signed in.
-//        next();
-//      } else {
-//        // No user is signed in.
-//        next('/confirm');
-//      }
-//    });
-//  } else {
-//    next();
-//  }
-// });
-
-
-// router.beforeEach((to, from, next) => {
-//  if (to.path === '/welcome') {
-//    const auth = getAuth();
-//    if (isSignInWithEmailLink(auth, window.location.href)) {
-//      signInWithEmailLink(auth, window.localStorage.getItem('emailForSignIn'), window.location.href)
-//        .then((result) => {
-//          // User is signed in.
-//          console.log('signed in')
-//          next();
-//        })
-//        .catch((error) => {
-//          // No user is signed in.
-//          next('/confirm');
-//        });
-//    } else {
-//      // No user is signed in.
-//      next('/confirm');
-//    }
-//  } else {
-//    next();
-//  }
-// });
-
 router.beforeEach((to, from, next) => {
  if (to.path === '/welcome') {
    const auth = getAuth();
@@ -142,7 +71,7 @@ router.beforeEach((to, from, next) => {
      let email = window.localStorage.getItem('useremail');
 
      if(!email) {
-       email = window.prompt('please provide your email for confirmation');
+       window.prompt('please provide your email for confirmation');
      }
      
      signInWithEmailLink(auth,email, window.location.href)

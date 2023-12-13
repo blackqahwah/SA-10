@@ -2,7 +2,7 @@
 <template>
 
 
-  <form  @submit.prevent="codeSeen(); sendVerificationEmail(); nextNow();" class="d-flex flex-column justify-content-center align-items-center">
+  <form  @submit.prevent="codeSeen(); " class="d-flex flex-column justify-content-center align-items-center">
 
 
     
@@ -68,28 +68,31 @@ export default {
     
  codeSeen() {
 
-       const confCodes = [ "paid1345", "paid40942", "paid24729", "paid20820"];
-   
+     const confCodes = [ "paid1345", "paid40942", "paid24729", "paid20820"];
      if (confCodes.includes(this.paidCode)) {
        
-       console.error('code matches');
+     console.error('code matches');
      localStorage.setItem("code", this.paidCode);
      localStorage.setItem('token', 'validToken');
+       this.sendVerificationEmail();
+       this.nextNow();
      } else {
+        window.prompt('please enter a valid confirmation code');
        console.error('invalid code');
+       return;
      }
  },
     
  sendVerificationEmail() {
 
-   const actionCodeSettings = {
+     const actionCodeSettings = {
      url:'https://speakarabic.web.app/welcome',
      handleCodeInApp: true
 };
   
    const auth = getAuth();
 
-  let email = window.localStorage.getItem('emailForSignIn');
+  let email = window.localStorage.getItem('useremail');
      
    sendSignInLinkToEmail(auth, email, actionCodeSettings)
      
@@ -113,23 +116,6 @@ nextNow() {
   this.$router.push({ name: 'getlink' })
     console.log("get the link");
 }
-
-  // submitForm() {
-  //   this.codeSeen();
-  //   this.sendVerificationEmail();
-  //   this.nextNow();
-  // }
-
-  // submitNow() {
-  //  console.log('Form is being submitted');
-  //  try {
-  //    this.codeSeen();
-  //    this.sendVerificationEmail();
-  //    this.nextNow();
-  //  } catch (error) {
-  //    console.error('Error in submitForm:', error);
-  //  }
-  // }
 
 
   }
