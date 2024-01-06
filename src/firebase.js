@@ -35,7 +35,7 @@ import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDw5YUKhpdeR7bq4t5z-0zYJ-CXfCFdjSE",
-    authDomain: "speakarabic.web.app.com",
+    authDomain: "speakarabic.web.app",
     projectId: "speakarabic-e7a34",
     storageBucket: "speakarabic-e7a34.appspot.com",
     messagingSenderId: "793096124393",

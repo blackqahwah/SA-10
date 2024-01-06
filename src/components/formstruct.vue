@@ -246,6 +246,7 @@ export const formToStorage = {
       
       
       console.log('profile created');
+      console.log(this.username);
     },
 
 //     sendVerificationEmail() {
