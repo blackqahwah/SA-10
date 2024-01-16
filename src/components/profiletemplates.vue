@@ -1,4 +1,3 @@
-<!-- ChildComponent.vue -->
 <template>
      
      <div class="d-flex flex-column align-items-center justify-content-center p-2">
@@ -78,7 +77,7 @@
 
   }
 
-  .moduleTopic{
+  .moduleTitletwodeep{
 
     font-size: 1.2rem;
     color: #103975 ;
@@ -88,39 +87,5 @@
   }
 
 
- .prev, .next{
 
-    background-color: #103975;
-    border: none !important;
-    color: #fac8ef;
-
-  }
-
-
-
- .begin{
-
-    background-color: #103975;
-    border: none !important;
-    color: white;
-
-  }
-
-
-  .introTitles{
-   color: #103975;
-  }
-
-
-
-/* @media (min-width: 1024px) {
-
-   .form-control {
-
-  width: 25vw !important;
-
-  }
-
-
-} */
 </style>

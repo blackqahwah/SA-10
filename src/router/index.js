@@ -4,6 +4,8 @@ import { getAuth, isSignInWithEmailLink, signInWithEmailLink } from "firebase/au
 
 import Profile from '../components/profile.vue' 
 
+import Userprofile from '../components/userprofile.vue'
+
 import Confirm from '../components/confirm.vue' 
 
 import Welcome from '../components/welcome.vue'
@@ -24,6 +26,16 @@ const routes = [
         },
      
     },
+
+  {
+      path: '/userprofile',
+      name: 'userprofile',
+      component: Userprofile,
+      // meta: {
+      //   requiresAuth: true,
+      // },
+
+  },
 
 
      {

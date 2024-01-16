@@ -7,11 +7,39 @@ import ProfileTemplates from './profiletemplates.vue'
 <!-- ParentComponent.vue -->
 <template>
  <ProfileTemplates>
-   <template v-slot:title>
-     <h1>Title of the Card</h1>
+
+
+   
+   <template #doneicontwo>
+
+     <i class="bi bi-stars "></i>
+
    </template>
-   <template v-slot:body>
-     <p>Body of the Card</p>
-   </template>
+
+   <template #moduleTitletwo>As salamu alaykum</template>
+
+   <template #moduleTitletwodeep>Welcome to the Arabic Writing Course for Beginners.</template>
+
+   
  </ProfileTemplates>
 </template>
+
+
+<script>
+
+import { auth } from "../firebase";
+import router from "../router";
+
+
+  export default {
+
+    components: {
+    ProfileTemplates,
+  }
+
+  }
+
+
+
+
+</script>
