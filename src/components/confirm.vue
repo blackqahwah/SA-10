@@ -68,7 +68,7 @@ export default {
     
  codeSeen() {
 
-     const confCodes = [ "paid1345", "paid40942", "paid24729", "paid20820"];
+     const confCodes = ["paid1345", "paid40942", "paid24729", "paid20820"];
      if (confCodes.includes(this.paidCode)) {
        
      console.error('code matches');
@@ -86,7 +86,7 @@ export default {
  sendVerificationEmail() {
 
      const actionCodeSettings = {
-     url:'https://speakarabic.web.app/welcome',
+     url:'https://speakarabic-courses.web.app/welcome',
      handleCodeInApp: true
 };
   

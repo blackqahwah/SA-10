@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "speakarabic-e7a34"
-  }
+    "default": "speakarabic-courses",
+    "prod": "speakarabic-courses"
+  },
+  "targets": {},
+  "etags": {}
 }
