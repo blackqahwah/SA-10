@@ -26,7 +26,7 @@ const isDone = ref(false);
     <template #greetings>All done! </template>
     
     <template #aninfo>Your profile has been created</template>
-    <template #anotherinfo>Please check your email to gain access</template>
+    <template #anotherinfo>Please check your email to gain access. Check your spam folder just in case.</template>
     
   </infosection>
   

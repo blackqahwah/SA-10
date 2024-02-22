@@ -10,16 +10,13 @@ import ProfileTemplates from './profiletemplates.vue'
 
 
    
-   <template #doneicontwo>
-
-     <i class="bi bi-stars "></i>
-
-   </template>
-
-   <template #moduleTitletwo>As salamu alaykum</template>
-
-   <template #moduleTitletwodeep>Welcome to the Arabic Writing Course for Beginners.</template>
-
+   <template #name>Name:</template>
+   <template #thename>mariam ajisebi</template>
+    <template #mycourses>Courses:</template>
+   <template #courseone>course one</template>
+   <template #coursetwo>course two</template>
+   <template #certificates>Certificates:</template>
+   <template #downloadprofilebtn>Download your profile</template>
    
  </ProfileTemplates>
 </template>
