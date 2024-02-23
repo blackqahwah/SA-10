@@ -2,6 +2,7 @@
 
 <div class="d-flex flex-column align-items-center justify-content-center p-2">
 
+
 <div id="slidea" class="carousel slide card d-flex flex-column align-items-center  p-3 ">
 
   <div class="carousel-inner mb-4">
@@ -256,7 +257,6 @@ align-items-center justify-content-center">
 
   </div>
 
-  
     </div>
 
   </template>
@@ -317,17 +317,13 @@ align-items-center justify-content-center">
   }
 
 
-  
-/* @media (min-width: 1024px) {
- 
-   .form-control {
+  .dowl{
 
-  width: 25vw !important;
-     
+  background-color: #103975;
+  border: none !important;
+  color: #fac8ef;
   }
 
- 
-} */
 </style>
 
 

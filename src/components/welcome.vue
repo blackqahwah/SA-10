@@ -8,6 +8,17 @@ import titleandtopic from './titntop.vue'
 
   <div>
 
+    <div class="d-flex flex-column align-items-center p-4">
+
+    <div class="d-flex flex-row align-items-center">
+
+            <div class="dowl btn btn-primary me-2" href="#">My profile</div>
+
+            <div class="dowl btn btn-primary me-2" href="#">Share with friends</div>
+    </div>
+    </div>
+    
+
   <titleandtopic>
   
 <template #doneicon>
@@ -24,7 +35,7 @@ import titleandtopic from './titntop.vue'
   <i class="bi bi-caret-right-fill"></i>
 </template>
 
-     <template #moduleTitletwo>A Quick overview of the course </template>
+     <template #moduleTitletwo>Quick overview of the course </template>
 
      <template #moduleTopictwo>The Arabic writing course has four sections.
      </template>
@@ -47,13 +58,13 @@ import titleandtopic from './titntop.vue'
     <template #assesmentInfo> hoajdaojad</template>
 
     
-    <template #prev> Back
-      
+    <template #prev> 
+      <i class="bi bi-caret-right-fill"></i>
     </template>
 
     
-    <template #next>Next
-      
+    <template #next>
+      <i class="bi bi-caret-right-fill"></i>
     </template>
 
     <template #titleicon>
@@ -75,13 +86,13 @@ import titleandtopic from './titntop.vue'
          <template #itemfour>Section two
      </template>
 
-    <template #lastprev> Back
-      
+    <template #lastprev> 
+      <i class="bi bi-caret-right-fill"></i>
     </template>
 
     
-    <template #lastnext>Begin
-      
+    <template #lastnext>
+      <i class="bi bi-caret-right-fill"></i>
     </template>
 
     
@@ -130,33 +141,6 @@ import router from "../router";
   }
   
   }
-
-//     if (isSignInWithEmailLink(auth, window.location.href)) {
-  
-//   let email = localStorage.getItem(this.useremail);
-//   if (!email) {
-    
-//     window.prompt('Please provide your email for confirmation');
-//   }
-  
-//   signInWithEmailLink(auth, this.email, window.location.href)
-    
-//     .then((result) => {
-   
-//       window.localStorage.removeItem(this.useremail);
-      
-//     })
-//     .catch((error) => {
-
-//       const errorCode = error.code;
-//     const errorMessage = error.message;
-    
-//     console.log(errorCode, errorMessage)
-
-//       console.log('no email found')
-      
-//     });
-// }
 
   
 </script>
