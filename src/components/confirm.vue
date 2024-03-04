@@ -98,8 +98,10 @@ export default {
      
   .then(() => {
 
+    window.localStorage.removeItem('useremail');
    
     console.log('sent!')
+    console.log(getIdToken);
   })
     
   .catch((error) => {

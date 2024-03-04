@@ -40,7 +40,7 @@
 
       <div>
         
-      <input v-model="username" type="name" class="form-control mb-4" id="name">
+      <input v-model="username" id="name" type="name" class="form-control mb-4">
         
         <slot name="inputname"></slot>
       
@@ -79,7 +79,7 @@
 
       <div>
         
-      <input v-model="useremail"  type="email" class="form-control mb-4" id="email">
+      <input v-model="useremail" id="email" type="email" class="form-control mb-4">
         
         <slot name="inputemail"></slot>
       
@@ -208,7 +208,9 @@
 
 
 import { getAuth, sendSignInLinkToEmail  } from "firebase/auth";
-  import {ref} from 'vue'
+import {ref} from 'vue'
+import { saveUserDetailsToFirestore } from "/src/firestoreService.js";
+
 
 export const formToStorage = {
   
@@ -243,43 +245,19 @@ export const formToStorage = {
       localStorage.usercountry = this.usercountry;
 
    localStorage.setItem('emailForSignIn', this.useremail);
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+
+      saveUserDetailsToFirestore(name, email);
       
       
       console.log('profile created');
       console.log(this.username);
+      console.log(name);
+      
     },
 
-//     sendVerificationEmail() {
-
-//    const actionCodeSettings = {
-//      url:'https://speakarabic.web.app/payteller',
-//      handleCodeInApp: true
-// };
-  
-//    const auth = getAuth();
-     
-//    sendSignInLinkToEmail(auth, this.useremail, actionCodeSettings)
-     
-//   .then(() => {
-
-   
-//    localStorage.setItem('emailForSignIn', this.useremail);
-//     localStorage.setItem('paidcode', this.userpaidcode);
-
-//     // console.log(emailForSignIn)
-    
-//     console.log('sent!')
-//   })
-    
-//   .catch((error) => {
-//     const errorCode = error.code;
-//     const errorMessage = error.message;
-    
-//     console.log(errorCode, errorMessage)
-  
-//   });
-
-//   },
 
    takemeThere() {
   this.$router.push({ name: 'confirm' })
