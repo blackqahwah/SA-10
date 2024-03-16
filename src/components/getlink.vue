@@ -3,31 +3,41 @@
 import { ref } from 'vue'; 
 import infosection from './info.vue';
 
-const isDone = ref(false);
+// const isDone = ref(false);
+  const cardOne = ref([
+    { id: 0, text: '' },
+  ])
+
+  const cardTwo= ref([
+    { id: 0, text: '' },
+  ])
+
+
+  const cardThree = ref([
+    { id: 0, text: '' },
+  ])
 
   
 </script>
 
 <template>
 
-  <infosection>
+  <infosection v-for="item in cardOne"
+    :content="item"
+    :key="item.id">
+    <template #anotherinfo>All done! </template>
+  </infosection>
 
-  <template #doneicon>
-      <i class="bi bi-check-all"></i>
-    </template>
+  <infosection v-for="item in cardTwo"
+    :content="item"
+    :key="item.id">
+    <template #anotherinfo>Your profile has been created</template>
+  </infosection>
 
-     <template #spareinfo v-if="isDone">
-
-        All done! 
-       
-      </template>
-
-    
-    <template #greetings>All done! </template>
-    
-    <template #aninfo>Your profile has been created</template>
+  <infosection v-for="item in cardThree"
+    :content="item"
+    :key="item.id">
     <template #anotherinfo>Please check your email to gain access. Check your spam folder just in case.</template>
-    
   </infosection>
   
   
@@ -39,18 +49,17 @@ const isDone = ref(false);
 
   /* .greeting {
     font-size: 2rem !important;
-  }
+  }*/
 
-   .infotwo, .infoone{
+   /* .infotwo{
     display:flex !important;
-      font-size: 1.3rem !important;
-     
-  }
+      font-size: 3rem !important;
+  } */
 
-  .done{
+  /* .done{
     display:flex !important;
   }
- */
+  */
  
 
 

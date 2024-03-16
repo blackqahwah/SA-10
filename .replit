@@ -35,3 +35,35 @@ build = ["sh", "-c", "npm run build"]
 run = ["sh", "-c", "npm run preview"]
 ignorePorts = false
 deploymentTarget = "gce"
+
+[[ports]]
+localPort = 5173
+externalPort = 80
+
+[[ports]]
+localPort = 9005
+externalPort = 3000
+
+[[ports]]
+localPort = 9006
+externalPort = 3001
+
+[[ports]]
+localPort = 9007
+externalPort = 3002
+
+[[ports]]
+localPort = 9008
+externalPort = 3003
+
+[[ports]]
+localPort = 9009
+externalPort = 4200
+
+[[ports]]
+localPort = 9010
+externalPort = 5000
+
+[[ports]]
+localPort = 9011
+externalPort = 5173

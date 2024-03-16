@@ -1,13 +1,33 @@
 <script setup>
+import { ref } from 'vue'; 
   
 import infosection from './info.vue'
 import buttons from './buttons.vue'
 import profile from './profile.vue'
 
-
-import { ref } from 'vue'; 
-const isDone = ref(false);
   
+const isDone = ref(false);
+
+  const cardOne = ref([
+    { id: 0, text: '' },
+  ])
+
+  const cardTwo = ref([
+    { id: 0, text: '' },
+  ])
+
+  const cardThree = ref([
+    { id: 0, text: '' },
+  ])
+
+  const cardFour = ref([
+    { id: 0, text: '' },
+  ])
+
+  const cardFive = ref([
+    { id: 0, text: '' },
+  ])
+
 </script>
 
 
@@ -15,30 +35,32 @@ const isDone = ref(false);
 <template>
 
   <div class="d-flex flex-column align-items-center justify-content-center container vh-100">
-  
-  <infosection>
-
-  <template #doneicon>
-
-    <i class="bi bi-geo-fill"></i>
-      
-    </template>
-
-    <template #spareinfo> Welcome to the Arabic Writing Course </template>
     
-    <template #greetings>Please create your profile to begin</template>
-
-    <template #infoone v-if="isDone">Please create your profile to begin</template>
- 
-
+  <div class="d-flex flex-column align-items-center p-2">
+  <infosection
+    v-for="item in cardOne"
+    :content="item"
+    :key="item.id">
+    <template #greetings> Welcome to the Arabic Writing Course </template>
   </infosection>
 
 <buttons link="/profile">
-    
   <template #abtn>Create Profile</template>
-
 </buttons>
+  </div>
 
+  <div class="d-flex flex-column align-items-center p-2">
+    <infosection
+      v-for="item in cardThree"
+      :content="item"
+      :key="item.id">
+      <template #greetings> Already enrolled? </template>
+    </infosection>
+
+    <buttons link="/confirm">
+      <template #abtn>Login</template>
+    </buttons>
+  </div>
 
   </div>
   

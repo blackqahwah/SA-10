@@ -36,7 +36,7 @@
 
       <div >
      
-        <button type="submit" class="btn btn-primary mt-3 fw-medium"> confirm
+        <button type="submit" class="btn btn-primary mt-3 fw-medium confirmbtn"> confirm
           </button>
        
       </div>
@@ -125,5 +125,17 @@ nextNow() {
 
 
     </script>
+
+<style scoped>
+
+
+ .confirmbtn {
+  background-color: #103975;
+  border: none !important;
+  color: white;
+  }
+
+
+</style> 
 
    

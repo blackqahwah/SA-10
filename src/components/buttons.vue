@@ -2,7 +2,7 @@
   <div >
 
      
-        <button class="buttons btn btn-primary mt-2 fw-medium" @click="navigate">
+        <button class="buttons btn btn-primary mb-2 fw-medium" @click="navigate">
 
         <slot name="abtn"></slot>
           
@@ -31,7 +31,6 @@ export default {
   background-color: #103975;
   border: none !important;
   color: white;
-  /* font-size: 5rem; */
   }
 
 
