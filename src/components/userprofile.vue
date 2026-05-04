@@ -163,7 +163,6 @@ import ModuleTemplates from './moduletemplates.vue'
   import router from "../router";
     import { onMounted } from 'vue';
   // import { getFirestore, doc, getDoc } from "../firebase";
-
   //   const db = getFirestore();
 
     export default {

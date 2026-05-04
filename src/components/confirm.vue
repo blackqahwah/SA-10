@@ -5,8 +5,6 @@
   <form  @submit.prevent="codeSeen(); " class="d-flex flex-column justify-content-center align-items-center">
 
 
-    
-
         <h2 class="form-text text-center mb-2">
           Please input your Teller Code to confirm your payment.
         </h2>

@@ -10,7 +10,7 @@ import Home from './components/home.vue'
   <body class=" d-flex flex-column justify-content-center align-items-center v-100">
     
   <main>
-    <router-view />
+    <router-view/>
   </main>
 
     </body>
